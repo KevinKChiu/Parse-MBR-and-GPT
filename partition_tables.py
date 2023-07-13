@@ -74,7 +74,7 @@ def parse_gpt(gpt_file, sector_size: int = 512) -> list[dict]:
     while partion_count < num_entries:
         entry = {}
         partion = _create_bytes_list(gpt_file.read(size_entry).hex())
-        # Check if the partitiona is empty
+        # Check if the current partition is empty
         if "".join(partion) != "0" * 256:
             entry["number"] = partion_count
             entry["start"] = _convert_bytes_endian(partion[32:40], 8)
